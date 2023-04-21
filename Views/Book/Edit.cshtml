@@ -1,0 +1,61 @@
+﻿@model FPTBook.Models.Book
+
+<div class="container">
+    <h3 class="text-success text-center" style="margin-top:-30px">Edit Book Information</h3>
+    <form method="post" asp-controller="Book" , asp-action="Edit" style="margin-bottom:80px">
+        <div class="form-group">
+            <label>Title</label>
+            <input class="form-control" asp-for="@Model.Title" />
+            <span class="text-danger" asp-validation-for="@Model.Title"></span>
+        </div>
+
+        <div class="form-group">
+            <label><b>Author</b></label>
+            <input class="form-control" asp-for="@Model.Author" />
+            <span class="text-danger" asp-validation-for="@Model.Author"></span>
+        </div>
+
+
+        <div class="form-group">
+            <label>Category Name</label>
+            <select class="list-group-item" asp-for="CategoryId"
+                    asp-items="@(new SelectList(ViewBag.Categories ,"Id","Name"))">
+                <option>Select a category</option>
+            </select>
+            <span class="text-danger" asp-validation-for="CategoryId"></span>
+        </div>
+
+        <div class="form-group">
+            <label><b>Description</b></label>
+            <input class="form-control" asp-for="@Model.Description" />
+            <span class="text-danger" asp-validation-for="@Model.Description"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Image</label><br />
+            <img src="@Model.Image" width="180px"/><br />
+            <input class="form-control" asp-for="@Model.Image" width="200" />
+            <span class="text-danger" asp-validation-for="@Model.Image"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Quantity</label>
+            <input class="form-control" asp-for="@Model.Quantity" />
+            <span class="text-danger" asp-validation-for="@Model.Quantity"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Price</label>
+            <input class="form-control" asp-for="@Model.Price" />
+            <span class="text-danger" asp-validation-for="@Model.Price"></span>
+        </div>
+
+  
+
+
+        <div>
+            <input class="btn btn-success" value="Edit" type="submit" />
+        </div>
+
+    </form>
+</div>

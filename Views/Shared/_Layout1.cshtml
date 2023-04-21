@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <link rel="icon" href="images/favicon.png" type="image/gif" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Fptbookshop</title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.css" />
+    <!-- font awesome style -->
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="~/css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="~/css/responsive.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/6b57bdf61a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+</head>
+
+<body>
+    <!-- header section strats     <div class="hero_area">-->
+        
+            
+            <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+                    <a style="padding-left: 40px; color: #00BFFF; font-size: 25px ; font-weight:bold" class="navbar-brand" asp-controller="Client" asp-action="Index">
+                        <span>
+                           FptBookShop
+                        </span>
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class=""> </span>
+                    </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+
+            <ul class="navbar-nav navbar-light" style="margin-left: 50px; font-weight: bold">
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
+                        {
+                    <li class="nav-item active" style="margin-left: 50px; margin-right: 50px; font-size: 20px; font-weight: bold">
+                        <a style="color:white" class="nav-link" asp-area="" asp-controller="Admin" asp-action="Index">Manage</a>
+                            </li>
+                        }
+
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("BookOwner"))
+                        {
+                    <li class="nav-item active" style="margin-left: 50px; font-size: 20px; font-weight: bold">
+                        <a style="color:white" class="nav-link" asp-area="" asp-controller="Book" asp-action="Index">Manage</a>
+                            </li>
+                <li class="nav-item active" style="margin-left: 50px; font-size: 20px; font-weight: bold">
+                        <a style="color:white" class="nav-link pl-lg-0" asp-controller="Client" asp-action="Index">Home<span class="sr-only">(current)</span></a>
+                            </li>
+                    <li class="nav-item" style="margin-left: 50px; font-size: 20px; font-weight: bold">
+                        <a style="color:white" class="nav-link" asp-controller="Client" asp-action="Store">Store</a>
+                            </li>
+                    <li class="nav-item" style="margin-left: 50px; font-size: 20px; font-weight: bold">
+                        <a style="color:white" class="nav-link" asp-controller="Client" asp-action="About">About</a>
+                            </li>
+                    <li class="nav-item" style="margin-left: 50px; font-size: 20px; font-weight: bold">
+                        <a style="color:white" class="nav-link" asp-controller="Client" asp-action="Blog">Contact</a>
+                            </li>
+                        }
+                        else{
+                    <li class="nav-item active" style="font-size: 20px; margin-left: 80px; font-weight: bold">
+                                <a style="color:white" class="nav-link pl-lg-0" asp-controller="Client" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                    <li class="nav-item" style="margin-left: 50px; font-size: 20px; font-weight: bold">
+                                <a style="color:white" class="nav-link" asp-controller="Client" asp-action="Store">Store</a>
+                            </li>
+                    <li class="nav-item" style="margin-left: 50px; font-size: 20px; font-weight: bold">
+                                <a style="color:white" class="nav-link" asp-controller="Client" asp-action="About">About</a>
+                            </li>
+                    <li class="nav-item" style="margin-left: 50px; font-size: 20px; font-weight: bold">
+                                <a style="color:white" class="nav-link" asp-controller="Client" asp-action="Blog">Contact</a>
+                            </li>
+
+                        }
+                            
+                         
+                        </ul>
+                    <partial name="_LoginPartial" style="color:white" />
+                      <!--   <from class="search_form">
+                            <input type="text" class="form-control" placeholder="Search here...">
+                            <button class="" type="submit">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                      </from>-->
+                    </div>
+                </nav>
+   
+
+    <div class="container">
+        <main role="main" class="pb-1">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="text-center text-lg-start text-muted" style="background-color: #778899;">
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <!-- Left -->
+            <div class="me-5 d-none d-lg-block">
+                <span style="color: whitesmoke; font-weight: bold; font-size: 20px">Get connected with us on social networks:</span>
+            </div>
+            <!-- Left -->
+            <!-- Right -->
+            <div>
+                <a href="https://www.facebook.com/">
+                    <button style="letter-spacing: 2px" class="btn btn-primary">
+                        <i class="fab fa-facebook"><b> Facebook</b></i>
+                    </button>
+                </a>
+
+                <a href="https://github.com/duchuy2278/assignmentcloud">
+                    <button style="letter-spacing: 2px" class="btn btn-success">
+                        <i class="fab fa-github"><b> Github</b></i>
+                    </button>
+                </a>
+
+                <a href="https://twitter.com/">
+                    <button class="btn btn-info">
+                        <i style="letter-spacing: 2px" class="fab fa-twitter"><b> Twitter</b></i>
+                    </button>
+                </a>
+
+                <a href="https://www.google.com.vn/">
+                    <button  class="btn btn-danger">
+                        <i style="letter-spacing: 2px" class="fab fa-google"><b> Google</b></i>
+                    </button>
+                </a>
+
+                <a href="https://www.instagram.com/">
+                    <button class="btn btn-warning">
+                        <i style="letter-spacing: 2px" class="fab fa-instagram"><b> Instagram</b></i>
+                    </button>
+                </a>
+
+                <a href="https://www.linkedin.com/">
+                    <button class="btn btn-primary">
+                        <i style="letter-spacing: 2px" class="fab fa-linkedin"><b> Linkedln</b></i>
+                    </button>
+                </a>
+
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-3">
+                        <!-- Content -->
+                        <h1 style="font-size: 30px; color: white; margin-top: 30px; letter-spacing: 1px">
+                            <i style="font: 30px" class="fas fa-book-open"></i>
+                            FptBookShop
+                        </h1>
+
+                        <p style="color: white; font-weight: bold; font-size: 18px; margin-top: 30px">
+                            Always bring you a comfortable experience
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div style="color: white; font-weight: bold" class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+
+
+      
+
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div style="color: white; font-weight: bold" class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4" style="font-weight: bold; color: white; font-size: 20px">
+                            Support
+                        </h6>
+                        <p>
+                            <i class="fas fa-question-circle" style="text-transform: uppercase; letter-spacing: 2px"> About</i>
+                        </p>
+                        <p>
+                            
+                            <i class="fas fa-comment" style="text-transform: uppercase; letter-spacing: 2px"> Feedback</i>
+                        </p>
+                        <p>
+                            <i class="fas fa-cart-plus" style="text-transform: uppercase; letter-spacing: 2px"> Order</i>
+                        </p>
+                        <p>
+                            <i class="fas fa-phone-alt" style="text-transform: uppercase; letter-spacing: 2px"> Contact Us</i>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div style="color: white; font-weight: bold" class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4" style="font-weight: bold; color: white; font-size: 20px">
+                            Contact
+                        </h6>
+                        <p><i class="fas fa-home me-3"></i> G403 Số 2 Phạm Văn Bạch</p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            fptbookshop@gmail.com
+                        </p>
+                        <p><i class="fa fa-phone"></i> +84 367 608 114</p>
+                        <p><i class="fa fa-phone"></i> + 01 234 567 89</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color: #F0FFF0; color: black; font-weight: bold; font-size: 30px">
+            © 2022 Copyright by Tuan Chien
+            <a class="text-reset fw-bold" href="#"></a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- footer section -->
+    <!-- jQery -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="js/bootstrap.js"></script>
+    <!-- custom js -->
+    <script src="js/custom.js"></script>
+    <!-- Google Map -->
+    
+    <!-- End Google Map -->
+
+</body>

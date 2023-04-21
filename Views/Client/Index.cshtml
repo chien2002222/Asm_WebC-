@@ -1,0 +1,202 @@
+﻿@model List<Book>
+
+@{
+    Layout = "_Layout1";
+}
+<!-- slider section <div class="hero_area " style="margin-top:-679px">-->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+
+    h3 {
+        font-size: 2rem;
+        font-weight: 800;
+    }
+
+    h4 {
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    h5 {
+        font-size: 1rem;
+        font-weight: 400;
+        color: #1d1d1d;
+    }
+
+
+    h6 {
+        color: #D8D8D8;
+    }
+
+    button {
+        font-size: 0.8rem;
+        font-weight: 700;
+        outline: none;
+        border: none;
+        background-color: #1d1d1d;
+        color: aliceblue;
+        padding: 13px 30px;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: 0.3s ease;
+    }
+
+        button:hover {
+            background-color: #3a3833;
+        }
+
+    #home {
+        background-image: url("https://wallpaperaccess.com/full/1426875.jpg");
+        width: 100%;
+        background-repeat: no-repeat;
+        height: 100vh;
+        background-size: cover;
+        background-position: top 30px center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+        #home span {
+            color: coral;
+        }
+
+    hr {
+        width: 150px;
+        height: 5px;
+        background-color: #fb774b;
+    }
+
+    .star {
+        padding: 10px 0;
+    }
+
+        .star i {
+            font-size: 0.8rem;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: goldenrod;
+        }
+
+    .product {
+        cursor: pointer;
+        margin-bottom: 2rem;
+    }
+
+        .product img {
+            transition: 0.3s all;
+        }
+
+        .product:hover img {
+            opacity: 0.7;
+        }
+
+        .product .buy-btn {
+            background: #fb774b;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: 0.3s all;
+        }
+
+        .product:hover .buy-btn {
+            transform: translateY(0);
+            opacity: 1;
+        }
+</style>
+
+<section id="home">
+    <div class="container">
+        <h5>New Arraivials</h5>
+        <h1><span>Best Price</span> This Year</h1>
+        <p>Library offers your very comfortable and enjoyment<br>in product experience</p>
+        <button>Shop Now</button>
+    </div>
+</section>
+
+<section id="featured" class="my-5 pb-5">
+    <div class="container text-center mt-5 py-5">
+        <h3>Best Selling Book</h3>
+        <hr class="mx-auto">
+        <p>Here you can check out books with fair price on Library</p>
+    </div>
+    <div class="row mx-auto container-fluid">
+
+        <div class="product text-center col-lg-3 col-md-4 col-12">
+            <img class="img-fluid mb-3" src="https://cdn0.fahasa.com/media/catalog/product/i/m/image_195509_1_12629_1.jpg" alt="">
+            <div class="star">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+            </div>
+            <h5 class="p-name">Dấu Chân Trên Cát</h5>
+            <h4 class="p-price">15$</h4>
+            <button class="buy-btn">Buy Now</button>
+        </div>
+        <div class="product text-center col-lg-3 col-md-4 col-12">
+            <img class="img-fluid mb-3" src="https://cdn0.fahasa.com/media/catalog/product/i/m/image_195509_1_36793.jpg" alt="" width="653" height="684">
+            <div class="star">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+            </div>
+            <h5 class="p-name">Nhà Giả Kim</h5>
+            <h4 class="p-price">10$</h4>
+            <button class="buy-btn">Buy Now</button>
+        </div>
+        <div class="product text-center col-lg-3 col-md-4 col-12">
+            <img class="img-fluid mb-3" src="https://cdn0.fahasa.com/media/catalog/product/t/i/tieu-thuyet-chuyen-the---thanh-guom-diet-quy---cau-chuyen-ve-tinh-anh-em-va-doi-diet-quy-obi.jpg" alt="" width="653" height="684">
+            <div class="star">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+            </div>
+            <h5 class="p-name">Thanh Gươm Diệt Quỷ</h5>
+            <h4 class="p-price">30$</h4>
+            <button class="buy-btn">Buy Now</button>
+        </div>
+        <div class="product text-center col-lg-3 col-md-4 col-12">
+            <img class="img-fluid mb-3" src="https://cdn0.fahasa.com/media/catalog/product/i/m/image_217480.jpg" alt="" width="653" height="684">
+            <div class="star">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+            </div>
+            <h5 class="p-name">
+                Cây Cam Ngọt Của Tôi
+            </h5>
+            <h4 class="p-price">20$</h4>
+            <button class="buy-btn">Buy Now</button>
+        </div>
+    </div>
+</section>
+
+<!-- end contact section -->
+<!-- info section -->
+
+

@@ -1,0 +1,249 @@
+﻿@page
+@model LoginModel
+
+
+
+@*<div class="container col-md-12">
+    <img src="~/Image/logo.png" width="200px" style="margin-left:430px" />
+</div>*@
+
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    section {
+        position: relative;
+        width: 100%;
+        
+        display: flex;
+    }
+
+    section .imgBx {
+        position: relative;
+        width: 50%;
+        
+    }
+
+    section .imgBx::before{
+        content: "";
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        background: linear-gradient(225deg, #e91e63, #03a9f4);
+        z-index: 1;
+        mix-blend-mode: screen;
+    }
+
+
+
+    section .imgBx img{
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        object-fit:cover;
+    }
+
+    section .contentBx {
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        width:50%;
+        height:100%;
+    }
+
+    section .contentBx .formBx {
+        width:50%;
+    } 
+
+    section .contentBx .formBx h2 {
+        text-align: center;
+        color: #607d8b;
+        font-weight: bold;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        border-bottom: 5px solid #ff4584;
+        display: inline-block;
+        letter-spacing: 1px;
+    } 
+
+    section .contentBx .formBx .inputBx {
+        margin-bottom: 10px;
+    }
+
+    section .contentBx .formBx .inputBx span {
+        font-size: 16px;
+        margin-bottom: 5px;
+        display: inline-block;
+        color: #607d8b;
+        font-weight:300;
+        font-size:16px;
+        letter-spacing: 1px;
+    }
+
+    section .contentBx .formBx .inputBx input{
+        width:100%;
+        padding: 10px 20px;
+        outline: none;
+        font-weight: 400;
+        border: 1px solid #607d8b;
+        font-size:16px;
+        letter-spacing: 1px;
+        color: #607d8b;
+        background: transparent;
+        border-radius: 30px;
+    }
+
+    section .contentBx .formBx .inputBx input[type="submit"] {
+        background: #ff4564;
+        color: #fff;
+        outline: none;
+        border: none;
+        font-weight: 500;
+        cursor:pointer;
+    }
+    section .contentBx .formBx .inputBx input[type="submit"]:hover{
+        background: #f53677;
+    }
+
+    section .contentBx .formBx .remember {
+        margin-bottom: 5px;
+        color: #607d8b;
+        font-weight: 400;
+        font-size: 14px;
+    }
+
+    section .contentBx .formBx .inputBx p{
+        color: #607d8b;
+    }
+
+    section .contentBx .formBx .inputBx p a{
+        color: #ff4584;
+    }
+</style>
+
+<section>
+    <div class="imgBx">
+        <img src="https://wallpaperaccess.com/full/46674.jpg" />
+    </div>
+    <div class="contentBx">
+        <div class="formBx">
+            <h2>Login</h2>
+            <form id="account" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="inputBx">
+                    <span asp-for="Input.Email">Email</span>
+                    <input asp-for="Input.Email" type="text" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="inputBx">
+                    <span asp-for="Input.Password">Password</span>
+                    <input asp-for="Input.Password" type="password"/>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="remember">
+                    <label asp-for="Input.RememberMe"><input asp-for="Input.RememberMe" />
+                            @Html.DisplayNameFor(m => m.Input.RememberMe)</label>
+                </div>
+                <div class="inputBx">
+                    <input type="submit" value="Sign In" name="" />
+                </div>
+                <div class="inputBx">
+                    <p>
+                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                    </p>
+                    <p>
+                        Don't have account ? 
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register now</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+@*<div class="row container"  >
+    <div class="col-md-4" style="margin-left: 350px">
+        <section>
+            <form id="account" method="post" class="text-info" style="font-size:17px">
+               
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" class="form-control" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label asp-for="Input.RememberMe">
+                            <input asp-for="Input.RememberMe" />
+                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info" style="border-radius: 15px">Log in</button>
+                </div>
+                <div class="form-group">
+                    <p>
+                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                    </p>
+                    <p>
+                        Don't have account ? 
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                    </p>
+                </div>
+            </form>
+        </section>
+    </div>
+   <!--  <div class="col-md-6 col-md-offset-2">
+        <section>
+            <h4>Use another service to log in.</h4>
+            <hr />
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
+                    <div>
+                        <p>
+                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                            for details on setting up this ASP.NET application to support logging in via external services.
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @foreach (var provider in Model.ExternalLogins)
+                                {
+                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                }
+                            </p>
+                        </div>
+                    </form>
+                }
+            }
+        </section>
+     </div>-->
+</div>*@
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

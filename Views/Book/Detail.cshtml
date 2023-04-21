@@ -1,0 +1,51 @@
+﻿@model FPTBook.Models.Book
+
+<div class="row container">
+
+    <div class="col-md-4 text-center" style="margin-top:82px" >    
+        <img src="@Model.Image" width="250" height="340" /><br />
+
+    </div>
+
+    <div class="col-md-8">
+        <h3 class="text-info text-center">Infomation</h3>
+        <table class="table table-info table-bordered">
+            <tr>
+                <th>Title</th>
+                <td>@Model.Title</td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td>@Model.Author</td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td>@Model.Category.Name</td>
+            </tr>
+            <tr>
+                <th>Quantity</th>
+                <td>@Model.Quantity</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>@Model.Price</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td style="text-align:justify">@Model.Description</td>
+            </tr>
+
+            <tr class="text-center">
+                <a class="btn btn-warning" asp-controller="Book" asp-action="Edit" asp-route-id="@Model.Id">
+                    <i class="bi bi-pencil-square"></i>
+                </a>
+                <a class="btn btn-danger" asp-controller="Book" asp-action="Delete" asp-route-id="@Model.Id" onclick="return confirm('Are you sure to delete this book BROOOO???');">
+                    <i class="bi bi-trash3-fill"></i>
+                </a>
+                <a class="btn btn-primary" asp-controller="Book" asp-action="Index" >
+                    <i class="bi bi-arrow-left"></i>
+                </a>
+            </tr>
+        </table>
+    </div>
+</div>

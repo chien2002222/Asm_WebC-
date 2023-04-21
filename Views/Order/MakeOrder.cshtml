@@ -1,0 +1,58 @@
+﻿@model FPTBook.Models.Order
+@{
+    Layout = "_Layout1";
+}
+@if (TempData["ok"] != null)
+{
+    <h3 class="alert alert-success mt-5">@TempData["ok"]</h3>
+}
+<h2 class="text-center mt-2" style="color: #063547">Your Order</h2>
+<div class="container" style="margin-bottom:400px; margin-top:25px">
+    <table class="table table-bordered" style="background-color: #f281d2;">
+        <thead class="thead-dark">
+            <tr>
+                <th>No</th>
+                <th>Orderer's Name</th>
+                <th>Date</th>
+                <th>Title</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total Price</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table" style="background-color:#FFE4E1;">
+                <td>1</td>
+                <td>@User.Identity.Name</td>
+                <td>@DateTime.Now.Date.ToShortDateString()</td>
+                <td>@Model.OrderName</td>
+                <td>@Model.OrderQuantity</td>
+                <td>@Model.Price $</td>
+                <td>@Model.OrderPrice $</td>
+                <td>
+                @{
+                    if (Model.Status == 1)
+                    {
+                        <h6>Approved</h6>
+                    }
+                    else if (Model.Status == 0)
+                    {
+                        <h6>Rejected</h6>
+                    }
+                    else
+                    {
+                        <h6>Pending</h6>
+                    }
+                }
+                </td>
+                <td>
+                    <a class="btn btn-danger" asp-action="CancelOrder" asp-controller="Order" 
+                      asp-route-id=@Model.Id>Cancel</i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div> 

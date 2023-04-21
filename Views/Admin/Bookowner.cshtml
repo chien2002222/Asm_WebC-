@@ -1,0 +1,37 @@
+﻿@model List<Microsoft.AspNetCore.Identity.IdentityUser>
+    
+<a class="btn btn-primary" asp-area="" asp-controller="Admin" asp-action="Customer">Customer</a>
+
+<a class="btn btn-warning" asp-area="" asp-controller="Admin" asp-action="BookOwner">Bookstore owner</a>
+
+<h3 class="container text-info text-center">List of Bookstore Owner </h3>
+ <div class="container" >
+    <div class="col-md-9">
+        <table class="table table-bordered " style="margin-left:150px">
+            <thead class="thead thead-dark">
+                <tr>
+                    <th>No</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var bookowner in Model)
+                {
+                    <tr>
+                        <td>@(Model.IndexOf(bookowner) + 1)</td>
+                        <td>@bookowner.UserName</td>
+                        <td>@bookowner.Email</td>
+                        <td>@bookowner.PhoneNumber</td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+
+

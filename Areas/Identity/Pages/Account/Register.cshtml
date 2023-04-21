@@ -1,0 +1,49 @@
+﻿@page
+@model RegisterModel
+
+<h1>@ViewData["Title"]</h1>
+
+
+
+
+
+
+
+<div class="row" style="margin-bottom:100px; box-shadow: 10px 10px 68px 10px #C0C0C0; padding-top:inherit; border-radius: 20px; transform: translate3d(-50%, -50%)">
+    <div class="col-md-6">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h2 style="font-size:30px; color: deepskyblue; font-weight: bold; text-align: center; text-transform:uppercase; font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif; margin-top: 5px">new account</h2>
+            <hr style="padding:2px; background:#FF6347" />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label style="font-size: 20px; font-weight:bold; color: #B22222" asp-for="Input.Email"></label>
+                <input style="border-radius: 30px" asp-for="Input.Email" class="form-control" placeholder="Enter your email" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label style="font-size: 20px; font-weight:bold; color: #B22222" asp-for="Input.PhoneNumber"></label>
+                <input style="border-radius: 30px" asp-for="Input.PhoneNumber" class="form-control" placeholder="Enter your phone" />
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label style="font-size: 20px; font-weight:bold; color: #B22222" asp-for="Input.Password"></label>
+                <input style="border-radius: 30px" asp-for="Input.Password" class="form-control" placeholder="Enter your password" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label style="font-size: 20px; font-weight:bold; color: #B22222" asp-for="Input.ConfirmPassword"></label>
+                <input style="border-radius: 30px" asp-for="Input.ConfirmPassword" class="form-control" placeholder="Confirm your password" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button style="border-radius: 30px; font-size:20px" type="submit" class="btn btn-success">Register</button>
+        </form>
+    </div>
+    <div class="col-md-4" style="margin: 0px 0px 0px 50px ">
+        <img src="https://wallpaperaccess.com/full/52803.jpg" width="520" height="550" style="border-radius: 0 10px 10px 0" />
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

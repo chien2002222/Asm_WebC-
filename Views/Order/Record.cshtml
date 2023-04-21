@@ -1,0 +1,78 @@
+﻿@model List<Order>
+
+<h2 class="text-center" style="color: #063547; margin-top:-30px">Ordered product list </h2>
+   @if(TempData["approve"] != null)
+   {
+    <h3>@TempData["1"]</h3>
+       <h3 class="alert alert-success">@TempData["approve"]</h3>
+   }
+@if (TempData["cancel"] != null)
+{
+    <h3 class ="alert alert-warning">@TempData["cancel"]</h3>
+}
+@if(Model.Count == 0)
+{
+    <h3 class="alert alert-danger">There are currently no orders</h3>
+    <img style="margin-left:300px" width="400" src="https://thumbs.dreamstime.com/b/vector-stick-man-cartoon-men-sitting-boring-front-stickman-drawing-bored-work-job-computer-screen-95741488.jpg" />
+}
+else{
+    <div class="container col-md-9 mt-3">
+        <table class="table table-bordered mb-5">
+            <thead class="thead-dark">
+                <tr>
+                    <th>No</th>
+                    <th>Customer's name</th>
+                    <th>Time</th>
+                    <th>Book title</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total Price</th>
+                    <th>Status</th>
+                    <th colspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>@(Model.IndexOf(order) + 1)</td>
+                        <td>@order.Customer</td>
+                        <td>@DateTime.Now.Date.ToShortDateString()</td>
+                        <td>@order.OrderName</td>
+                        <td>@order.OrderQuantity</td>
+                        <td>@order.Price $</td>
+                        <td>@order.OrderPrice $</td>
+                        <td>@{if(order.Status == 1)
+                            {
+                                    <h6>Approved</h6>
+                            }
+                            else if (order.Status == 0){
+                                    <h6>Rejected</h6>
+                            }
+                            else{
+                                    <h6>Pending</h6>
+                            }}
+                        </td>
+                        @if(order.Status != 1 && order.Status !=0)
+                        {
+                            <td>
+                                <a class="btn btn-primary" asp-route-quantity="@order.OrderQuantity" asp-controller="Order" asp-action="Approve" asp-route-id="@order.Id"><i class="fa-solid fa-check"></i></a>
+                            </td>
+                            <td>
+                                <a class="btn btn-danger" asp-controller="Order" asp-action="Cancel" asp-route-id="@order.Id" style="width:42px"><i class="fa-solid fa-xmark"></i></a>
+                            </td>
+                        }
+                        else{
+                            <h6></h6>
+                        }
+                       
+                    </tr>
+                }
+                @*<tr>
+            <td>Total Quantity: @TempData["1"]  </td>
+            <td>Total Price: </td>
+            </tr> *@
+            </tbody>
+        </table>
+    </div>
+}
